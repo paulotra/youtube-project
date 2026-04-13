@@ -2,12 +2,17 @@ import { NextResponse } from "next/server";
 import axios from "@/lib/axios";
 
 export async function GET(_request: Request) {
+  const { searchParams } = new URL(_request.url);
+
   try {
     const response = await axios.get("/videos", {
       params: {
-        part: "snippet,contentDetails,statistics",
-        chart: "mostPopular",
-        maxResults: "12",
+        part: searchParams.get("part"),
+        chart: searchParams.get("chart"),
+        maxResults: searchParams.get("maxResults"),
+        ...(searchParams.get("categoryId") && {
+          videoCategoryId: searchParams.get("categoryId"),
+        }),
       },
     });
     return NextResponse.json(response.data);
