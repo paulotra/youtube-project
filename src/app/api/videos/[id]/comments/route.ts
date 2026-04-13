@@ -1,11 +1,11 @@
 import { NextResponse } from "next/server";
 import axios from "@/lib/axios";
 
-type VideoParams = {
+type CommentsParams = {
   params: Promise<{ id: string }>;
 };
 
-export async function GET(_request: Request, { params }: VideoParams) {
+export async function GET(_request: Request, { params }: CommentsParams) {
   const { id } = await params;
   try {
     const response = await axios.get("/commentThreads", {

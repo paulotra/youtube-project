@@ -13,12 +13,15 @@ export default async function VideoComments({ id }: { id: string }) {
           >
             <img
               src={
-                comment.snippet.topLevelComment.snippet.authorProfileImageUrl
+                comment?.snippet?.topLevelComment?.snippet
+                  ?.authorProfileImageUrl
               }
-              alt={comment.snippet.topLevelComment.snippet.authorDisplayName}
+              alt={
+                comment?.snippet?.topLevelComment?.snippet?.authorDisplayName
+              }
               className="w-10 h-10 rounded-full"
             />
-            <p>{comment.snippet.topLevelComment.snippet.textDisplay}</p>
+            <p>{comment?.snippet?.topLevelComment?.snippet?.textDisplay}</p>
           </li>
         ))}
       </ul>
