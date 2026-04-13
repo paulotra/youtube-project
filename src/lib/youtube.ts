@@ -28,11 +28,11 @@ interface YouTubeResponse {
 export async function getVideos(): Promise<Video[]> {
   const response = await fetch(`${process.env.BASE_URL}/api/videos`);
   const data: YouTubeResponse = await response.json();
-  return data.items;
+  return data?.items;
 }
 
 export async function getVideoById(id: string): Promise<Video> {
   const response = await fetch(`${process.env.BASE_URL}/api/videos/${id}`);
   const data: YouTubeResponse = await response.json();
-  return data.items[0];
+  return data?.items[0] || [];
 }

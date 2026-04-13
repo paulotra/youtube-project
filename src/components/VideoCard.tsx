@@ -11,10 +11,10 @@ export default function VideoCard({ video }: VideoCardProps) {
       <Link href={`/video/${video.id}`}>
         <img
           className="w-full max-h-48 object-center object-cover mb-4"
-          src={video.snippet.thumbnails.medium.url}
-          alt={video.snippet.title}
+          src={video?.snippet?.thumbnails?.medium?.url}
+          alt={video?.snippet?.title}
         />
-        <h2>{video.snippet.title}</h2>
+        <h2>{video?.snippet?.title}</h2>
       </Link>
     </li>
   );
