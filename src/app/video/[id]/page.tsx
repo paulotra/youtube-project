@@ -2,6 +2,7 @@ import Link from "next/link";
 import { getVideoById } from "@/lib/videos";
 import VideoPlayer from "@/components/VideoPlayer";
 import VideoComments from "@/components/VideoComments";
+import RelatedVideos from "@/components/RelatedVideos";
 
 export default async function VideoPage({
   params,
@@ -16,18 +17,18 @@ export default async function VideoPage({
         Go back to home
       </Link>
       <div className="flex gap-6">
-        {id ? (
-          <div className="w-full flex flex-col gap-6">
-            <h1 className="text-2xl">{video.snippet.title}</h1>
-            <VideoPlayer id={id} />
-            <VideoComments id={id} />
-          </div>
+        {video ? (
+          <>
+            <div className="w-full flex flex-col gap-6">
+              <h1 className="text-2xl">{video.snippet.title}</h1>
+              <VideoPlayer id={id} />
+              <VideoComments id={id} />
+            </div>
+            <RelatedVideos categoryId={video.snippet.categoryId} />
+          </>
         ) : (
           <p>Video not found</p>
         )}
-        <div className="w-md sticky top-[20px] self-start">
-          <h2 className="text-2xl">Related Video</h2>
-        </div>
       </div>
     </div>
   );

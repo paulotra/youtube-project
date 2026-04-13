@@ -1,16 +1,28 @@
-import { Video } from "@/types/video";
+import { Video } from "@/types/videos";
 import Link from "next/link";
 
 interface VideoCardProps {
   video: Video;
+  orientation?: "horizontal" | "vertical";
 }
 
-export default function VideoCard({ video }: VideoCardProps) {
+export default function VideoCard({
+  video,
+  orientation = "vertical",
+}: VideoCardProps) {
+  const isVertical = orientation === "vertical";
+
   return (
     <li className="w-sm" key={video.id}>
-      <Link href={`/video/${video.id}`}>
+      <Link
+        href={`/video/${video.id}`}
+        className={isVertical ? "flex flex-col" : "flex items-start gap-4"}
+      >
         <img
-          className="w-full max-h-48 object-center object-cover mb-4"
+          className={
+            (isVertical ? "w-full max-h-48" : "w-32") +
+            " object-center object-cover mb-4"
+          }
           src={video?.snippet?.thumbnails?.medium?.url}
           alt={video?.snippet?.title}
         />
