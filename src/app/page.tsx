@@ -1,5 +1,5 @@
 import VideoCard from "@/components/VideoCard";
-import { getVideos } from "@/lib/youtube";
+import { getVideos } from "@/lib/videos";
 
 export default async function Home() {
   const videos = await getVideos();
