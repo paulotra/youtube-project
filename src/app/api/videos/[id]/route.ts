@@ -1,13 +1,17 @@
 import { NextResponse } from "next/server";
 import axios from "@/lib/axios";
 
-export async function GET(_request: Request) {
+type VideoParams = {
+  params: Promise<{ id: string }>;
+};
+
+export async function GET(_request: Request, { params }: VideoParams) {
+  const { id } = await params;
   try {
     const response = await axios.get("/videos", {
       params: {
         part: "snippet,contentDetails,statistics",
-        chart: "mostPopular",
-        maxResults: "12",
+        id,
       },
     });
     return NextResponse.json(response.data);
