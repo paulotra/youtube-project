@@ -16,7 +16,7 @@ export default async function VideoPage({
         Go back to home
       </Link>
       <div className="flex gap-6">
-        (id ? <VideoPlayer id={id} /> : <p>Video not found</p>)
+        {id ? <VideoPlayer id={id} /> : <p>Video not found</p>}
         <div className="w-md">
           <h2 className="text-2xl">Related Video</h2>
         </div>
