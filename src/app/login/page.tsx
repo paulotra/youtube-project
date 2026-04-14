@@ -42,9 +42,9 @@ export default function LoginPage() {
     }
   }
   return (
-    <div className="flex items-center justify-center h-screen">
+    <div className="flex items-center justify-center pt-20">
       <form
-        className="flex flex-col items-center justify-center h-screen"
+        className="flex flex-col items-center justify-center mt-20"
         onSubmit={(e) => {
           e.preventDefault()
           handleLogin()
