@@ -1,12 +1,12 @@
-import { getRelatedVideos } from "@/lib/videos";
-import VideoCard from "@/components/VideoCard";
+import { getRelatedVideos } from '@/lib/videos'
+import VideoCard from '@/components/VideoCard'
 
 export default async function RelatedVideos({
   categoryId,
 }: {
-  categoryId: string;
+  categoryId: string
 }) {
-  const videos = await getRelatedVideos(categoryId);
+  const videos = await getRelatedVideos(categoryId)
   return (
     <div className="w-md sticky top-[20px] self-start">
       <h2 className="text-2xl">Related Video</h2>
@@ -16,5 +16,5 @@ export default async function RelatedVideos({
         ))}
       </ul>
     </div>
-  );
+  )
 }

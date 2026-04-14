@@ -1,16 +1,16 @@
-import Link from "next/link";
-import { getVideoById } from "@/lib/videos";
-import VideoPlayer from "@/components/VideoPlayer";
-import VideoComments from "@/components/VideoComments";
-import RelatedVideos from "@/components/RelatedVideos";
+import Link from 'next/link'
+import { getVideoById } from '@/lib/videos'
+import VideoPlayer from '@/components/VideoPlayer'
+import VideoComments from '@/components/VideoComments'
+import RelatedVideos from '@/components/RelatedVideos'
 
 export default async function VideoPage({
   params,
 }: {
-  params: Promise<{ id: string }>;
+  params: Promise<{ id: string }>
 }) {
-  const { id } = await params;
-  const video = await getVideoById(id);
+  const { id } = await params
+  const video = await getVideoById(id)
   return (
     <div className="p-10 flex flex-col">
       <Link href="/" className="mb-6">
@@ -31,5 +31,5 @@ export default async function VideoPage({
         )}
       </div>
     </div>
-  );
+  )
 }

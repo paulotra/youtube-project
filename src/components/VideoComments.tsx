@@ -1,7 +1,7 @@
-import { getComments } from "@/lib/comments";
+import { getComments } from '@/lib/comments'
 
 export default async function VideoComments({ id }: { id: string }) {
-  const comments = await getComments(id);
+  const comments = await getComments(id)
   return (
     <div>
       <h2 className="text-3xl">Comments</h2>
@@ -26,5 +26,5 @@ export default async function VideoComments({ id }: { id: string }) {
         ))}
       </ul>
     </div>
-  );
+  )
 }

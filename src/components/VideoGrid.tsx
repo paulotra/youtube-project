@@ -1,30 +1,30 @@
-"use client";
+'use client'
 
-import InfiniteScroll from "react-infinite-scroll-component";
-import VideoCard from "@/components/VideoCard";
-import { Video } from "@/types/videos";
-import { useState } from "react";
-import { getVideos } from "@/lib/videos";
+import InfiniteScroll from 'react-infinite-scroll-component'
+import VideoCard from '@/components/VideoCard'
+import { Video } from '@/types/videos'
+import { useState } from 'react'
+import { getVideos } from '@/lib/videos'
 
 interface VideoGridProps {
-  initialVideos: Video[];
-  initialNextPageToken?: string;
+  initialVideos: Video[]
+  initialNextPageToken?: string
 }
 
 export default function VideoGrid({
   initialVideos,
   initialNextPageToken,
 }: VideoGridProps) {
-  const [videos, setVideos] = useState<Video[]>(initialVideos);
-  const [nextPageToken, setNextPageToken] = useState(initialNextPageToken);
+  const [videos, setVideos] = useState<Video[]>(initialVideos)
+  const [nextPageToken, setNextPageToken] = useState(initialNextPageToken)
 
   async function loadMore() {
     try {
-      const nextVideos = await getVideos(nextPageToken);
-      setVideos((prev) => [...prev, ...nextVideos.items]);
-      setNextPageToken(nextVideos.nextPageToken);
+      const nextVideos = await getVideos(nextPageToken)
+      setVideos((prev) => [...prev, ...nextVideos.items])
+      setNextPageToken(nextVideos.nextPageToken)
     } catch (error) {
-      console.error("Error loading more videos:", error);
+      console.error('Error loading more videos:', error)
     }
   }
 
@@ -42,5 +42,5 @@ export default function VideoGrid({
         ))}
       </ul>
     </InfiniteScroll>
-  );
+  )
 }

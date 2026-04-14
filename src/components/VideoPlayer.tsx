@@ -6,5 +6,5 @@ export default function VideoPlayer({ id }: { id: string }) {
         src={`https://www.youtube.com/embed/${id}`}
       ></iframe>
     </div>
-  );
+  )
 }
