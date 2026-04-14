@@ -23,7 +23,7 @@ export default function VideoCard({
             (isVertical ? "w-full max-h-48" : "w-32") + " object-cover mb-4"
           }
           src={video.snippet?.thumbnails?.medium?.url}
-          alt={video.snippet.title}
+          alt={video.snippet?.title}
         />
         <h2>{video.snippet?.title}</h2>
       </Link>
