@@ -1,4 +1,5 @@
 import { getComments } from '@/lib/comments'
+import Image from 'next/image'
 
 export default async function VideoComments({ id }: { id: string }) {
   const comments = await getComments(id)
@@ -11,7 +12,7 @@ export default async function VideoComments({ id }: { id: string }) {
             key={comment.id}
             className="flex gap-4 my-4 bg-neutral-900 p-4 rounded"
           >
-            <img
+            <Image
               src={
                 comment?.snippet?.topLevelComment?.snippet
                   ?.authorProfileImageUrl

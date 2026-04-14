@@ -1,5 +1,6 @@
 import { Video } from '@/types/videos'
 import Link from 'next/link'
+import Image from 'next/image'
 
 interface VideoCardProps {
   video: Video
@@ -18,7 +19,7 @@ export default function VideoCard({
         href={`/video/${video.id}`}
         className={isVertical ? 'flex flex-col' : 'flex items-start gap-4'}
       >
-        <img
+        <Image
           className={
             (isVertical ? 'w-full max-h-48' : 'w-32') + ' object-cover mb-4'
           }
