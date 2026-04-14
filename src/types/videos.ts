@@ -22,6 +22,7 @@ export interface Video {
   };
 }
 
-export interface YouTubeResponse {
+export interface VideoResponse {
   items: Video[];
+  nextPageToken?: string;
 }

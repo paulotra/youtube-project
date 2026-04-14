@@ -1,30 +1,34 @@
-import { Video, YouTubeResponse } from "@/types/videos";
+import { Video, VideoResponse } from "@/types/videos";
+import { getBaseUrl } from "@/lib/utils";
 
-export async function getVideos(): Promise<Video[]> {
+export async function getVideos(
+  pageToken?: string,
+): Promise<{ items: Video[]; nextPageToken?: string }> {
   const params = new URLSearchParams({
     part: "snippet,contentDetails,statistics",
     chart: "mostPopular",
     maxResults: "12",
+    ...(pageToken && { pageToken }),
   });
-  const response = await fetch(`${process.env.BASE_URL}/api/videos?${params}`);
-  const data: YouTubeResponse = await response.json();
-  return data?.items;
+  const response = await fetch(`${getBaseUrl()}/api/videos?${params}`);
+  const data: VideoResponse = await response.json();
+  return { items: data.items, nextPageToken: data.nextPageToken };
 }
 
 export async function getRelatedVideos(categoryId: string): Promise<Video[]> {
   const params = new URLSearchParams({
     part: "snippet,contentDetails,statistics",
     chart: "mostPopular",
-    maxResults: "12",
+    maxResults: "8",
     categoryId,
   });
-  const response = await fetch(`${process.env.BASE_URL}/api/videos?${params}`);
-  const data: YouTubeResponse = await response.json();
-  return data?.items;
+  const response = await fetch(`${getBaseUrl()}/api/videos?${params}`);
+  const data: VideoResponse = await response.json();
+  return data?.items ?? [];
 }
 
 export async function getVideoById(id: string): Promise<Video | null> {
-  const response = await fetch(`${process.env.BASE_URL}/api/videos/${id}`);
-  const data: YouTubeResponse = await response.json();
+  const response = await fetch(`${getBaseUrl()}/api/videos/${id}`);
+  const data: VideoResponse = await response.json();
   return data?.items[0] ?? null;
 }

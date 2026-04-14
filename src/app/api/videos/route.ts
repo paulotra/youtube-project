@@ -3,15 +3,21 @@ import axios from "@/lib/axios";
 
 export async function GET(_request: Request) {
   const { searchParams } = new URL(_request.url);
+  const { part, chart, maxResults, categoryId, pageToken } = Object.fromEntries(
+    searchParams.entries(),
+  );
 
   try {
     const response = await axios.get("/videos", {
       params: {
-        part: searchParams.get("part"),
-        chart: searchParams.get("chart"),
-        maxResults: searchParams.get("maxResults"),
-        ...(searchParams.get("categoryId") && {
-          videoCategoryId: searchParams.get("categoryId"),
+        part: part,
+        chart: chart,
+        maxResults: maxResults,
+        ...(categoryId && {
+          videoCategoryId: categoryId,
+        }),
+        ...(pageToken && {
+          pageToken: pageToken,
         }),
       },
     });
