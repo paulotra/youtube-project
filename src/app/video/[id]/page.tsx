@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import { getVideoById } from '@/lib/videos'
 import VideoPlayer from '@/components/VideoPlayer'
 import VideoComments from '@/components/VideoComments'
