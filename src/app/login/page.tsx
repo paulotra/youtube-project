@@ -15,6 +15,7 @@ export default function LoginPage() {
   }
 
   const validate = () => {
+    resetError()
     if (!email) {
       setError((prev) => ({ ...prev, email: 'Email is required' }))
     }
@@ -36,7 +37,6 @@ export default function LoginPage() {
   }
 
   const handleLogin = () => {
-    resetError()
     if (validate()) {
       router.push('/admin')
     }
@@ -44,7 +44,7 @@ export default function LoginPage() {
   return (
     <div className="flex items-center justify-center pt-20">
       <form
-        className="flex flex-col items-center justify-center mt-20"
+        className="flex flex-col items-center justify-center mt-10"
         onSubmit={(e) => {
           e.preventDefault()
           handleLogin()

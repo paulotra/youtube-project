@@ -16,12 +16,18 @@ export default function Navbar() {
           className="bg-neutral-800 px-4 py-2 rounded-full w-full max-w"
         />
       </div>
-      <div>
+      <div className="flex gap-x-4">
         <Link
           href="/login"
-          className="px-6 py-2 bg-blue-600 cursor-pointer text-white rounded hover:bg-blue-700 transition w-full"
+          className="px-6 py-2 bg-blue-600 cursor-pointer text-white rounded hover:bg-blue-700 transition"
         >
           Login
+        </Link>
+        <Link
+          href="/register"
+          className="px-6 py-2 bg-white cursor-pointer text-black rounded hover:bg-blue-700 transition"
+        >
+          Register
         </Link>
       </div>
     </nav>

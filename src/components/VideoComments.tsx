@@ -21,6 +21,8 @@ export default async function VideoComments({ id }: { id: string }) {
                 comment?.snippet?.topLevelComment?.snippet?.authorDisplayName
               }
               className="w-10 h-10 rounded-full"
+              width={320}
+              height={180}
             />
             <p>{comment?.snippet?.topLevelComment?.snippet?.textDisplay}</p>
           </li>

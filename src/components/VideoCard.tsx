@@ -25,6 +25,8 @@ export default function VideoCard({
           }
           src={video.snippet?.thumbnails?.medium?.url}
           alt={video.snippet?.title}
+          width={320}
+          height={120}
         />
         <h2>{video.snippet?.title}</h2>
       </Link>

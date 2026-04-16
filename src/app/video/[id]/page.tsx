@@ -13,9 +13,6 @@ export default async function VideoPage({
   const video = await getVideoById(id)
   return (
     <div className="p-10 flex flex-col">
-      <Link href="/" className="mb-6">
-        Go back to home
-      </Link>
       <div className="flex gap-6">
         {video ? (
           <>
