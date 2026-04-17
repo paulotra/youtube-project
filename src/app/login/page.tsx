@@ -3,12 +3,16 @@
 import { useState } from 'react'
 import { login } from '@/app/lib/actions'
 import { ADMIN } from '@/lib/constants'
+import { useAuth } from '@/app/context/AuthContext'
+import { useRouter } from 'next/navigation'
 
 export default function LoginPage() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [load, setLoad] = useState(false)
   const [error, setError] = useState<{ email?: string; password?: string }>({})
+  const { setUser } = useAuth()
+  const router = useRouter()
 
   const resetError = () => {
     setError({ email: '', password: '' })
@@ -40,6 +44,12 @@ export default function LoginPage() {
     if (validate()) {
       setLoad(true)
       await login(email)
+      router.push('/')
+      setUser({
+        firstName: 'Paulo',
+        lastName: 'Trajano',
+        email,
+      })
     }
   }
   return (
