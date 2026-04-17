@@ -1,3 +1,5 @@
-export default function AdminPage() {
-  return <div>Hello</div>
+'use server'
+
+export default async function AdminPage() {
+  return <div></div>
 }

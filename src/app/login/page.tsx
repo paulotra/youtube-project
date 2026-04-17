@@ -1,14 +1,13 @@
 'use client'
 
 import { useState } from 'react'
-import { useRouter } from 'next/navigation'
+import { login } from '@/app/lib/actions'
 import { ADMIN } from '@/lib/constants'
 
 export default function LoginPage() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState<{ email?: string; password?: string }>({})
-  const router = useRouter()
 
   const resetError = () => {
     setError({ email: '', password: '' })
@@ -36,9 +35,9 @@ export default function LoginPage() {
     return false
   }
 
-  const handleLogin = () => {
+  const handleLogin = async () => {
     if (validate()) {
-      router.push('/admin')
+      await login(email)
     }
   }
   return (
