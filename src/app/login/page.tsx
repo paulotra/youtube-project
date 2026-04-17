@@ -7,6 +7,7 @@ import { ADMIN } from '@/lib/constants'
 export default function LoginPage() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [load, setLoad] = useState(false)
   const [error, setError] = useState<{ email?: string; password?: string }>({})
 
   const resetError = () => {
@@ -37,6 +38,7 @@ export default function LoginPage() {
 
   const handleLogin = async () => {
     if (validate()) {
+      setLoad(true)
       await login(email)
     }
   }
@@ -74,7 +76,7 @@ export default function LoginPage() {
           type="submit"
           className="px-6 py-2 bg-blue-600 cursor-pointer text-white rounded hover:bg-blue-700 transition w-full"
         >
-          Login
+          {load ? 'Loading...' : 'Login'}
         </button>
       </form>
     </div>

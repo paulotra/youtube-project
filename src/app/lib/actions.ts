@@ -9,7 +9,7 @@ export async function login(email: string) {
     secure: true,
     path: '/',
   })
-  redirect('admin')
+  redirect('/admin')
 }
 
 export async function logout() {
